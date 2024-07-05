@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-text-display',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextDisplayComponent implements OnInit {
 
-  constructor() { }
+  name : string = '';
+  constructor(private _sharedService : SharedService) { }
 
   ngOnInit(): void {
+  }
+
+  display(){
+    this._sharedService.setDataChange(this.name);
   }
 
 }

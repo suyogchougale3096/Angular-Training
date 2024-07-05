@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { FormatterComponent } from './components/formatter/formatter.component';
 import { TextDisplayComponent } from './components/text-display/text-display.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -16,7 +17,9 @@ import { TextDisplayComponent } from './components/text-display/text-display.com
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
-  ]
+    HomeRoutingModule,
+    FormsModule
+  ],
+  providers :[]
 })
 export class HomeModule { }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserdataComponent } from './modules/userdata/userdata.component';
 
 const routes: Routes = [
   {
@@ -7,6 +8,9 @@ const routes: Routes = [
   },
   {
     path : '', redirectTo : '/home', pathMatch : 'full'
+  },
+  {
+    path : 'userdata', component : UserdataComponent
   }
 ];
 

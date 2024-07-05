@@ -1,9 +1,23 @@
 <div class="mb-5">
     <!-- <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label> -->
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Type Text :-"></textarea>
+    <textarea name = "textarea1" [(ngModel)] = "name"  class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Type Text :-" (input) = "display()"></textarea>
 </div>
 
-<div class="mb-3">
+<div class="mb-3 bg-light h-25 p-2">
     <!-- <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label> -->
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Output Text:-"></textarea>
+    <!-- /<textarea class="form-control" id="exampleFormControlTextarea2" rows="3" placeholder="Output Text:-"></textarea> -->
+     <div>{{name}}</div>
 </div>
+
+<!-- <button class="btn btn-primary" (click) = "display()">Click</button> -->
+
+
+<!-- Difference between behavirial subject & subject
+What is observable
+What is subscribe & unsubscribe in angular
+how to import use service inside components
+how to use service 
+-->
+
+
+
