@@ -1,0 +1,11 @@
+<div class="header fs-4 p-2">Text Formatted</div>
+
+<div class=" mt-3 d-flex justify-content-between">
+    <div class="text-display bg-color p-3">
+        <app-text-display [item] = "btn_class"></app-text-display>
+    </div>
+
+    <div class="formatter border p-3 bg-color">
+        <app-formatter (updateDataEvent) = "updateData($event)"></app-formatter>
+    </div>
+</div>

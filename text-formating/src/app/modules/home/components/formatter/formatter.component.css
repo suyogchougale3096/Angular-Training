@@ -1,0 +1,29 @@
+.count{
+    background-color: gray;
+    color: white;
+    padding: 2%;
+    font-weight: bold;
+}
+
+.left{
+    width: 50%;
+}
+
+.right{
+    width: 50%;
+}
+
+.btn{
+    display: block;
+    margin: 5%;
+    background-color: white;
+}
+
+.icon-bg{
+    background-color: white;
+}
+
+.buttons{
+    background-color: #EEEDEB;
+}
+
