@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+
 import { UserdataRoutingModule } from './userdata-routing.module';
-import { UserdataComponent } from './userdata/userdata.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserdataComponent } from './userdata.component';
+import { CookieService } from 'ngx-cookie-service';
+
 
 
 @NgModule({
@@ -11,7 +15,9 @@ import { UserdataComponent } from './userdata/userdata.component';
   ],
   imports: [
     CommonModule,
-    UserdataRoutingModule
-  ]
+    UserdataRoutingModule,
+    ReactiveFormsModule
+  ],
+  providers: [CookieService]
 })
 export class UserdataModule { }
