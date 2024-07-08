@@ -57,42 +57,20 @@ export class UserdataComponent implements OnInit {
     // this.signup.reset();
     // this.getAllStoredForms();
 
-    this.database_name = `${this.signup.get('dbname')?.value}`
-
+    // this.database_name = `${this.signup.get('dbname')?.value}`
     const formValues = this.signup.value;
     const existingFormsString = this.cookieService.get('signup');
-    const existingForms = existingFormsString ? JSON.parse(existingFormsString) : [];
+    const existingForms = JSON.parse(existingFormsString);
     existingForms.push(formValues);
     this.cookieService.set('signup', JSON.stringify(existingForms));
     console.log(`Form Data: ${JSON.stringify(existingForms)}`);
     
-    // Clear the form fields
     this.signup.reset();
-    
-    // Update stored forms
     this.getAllStoredForms();
   }
 
   getAllStoredForms(): void {
     const storedFormsString = this.cookieService.get('signup');
-    this.storedForms = storedFormsString ? JSON.parse(storedFormsString) : [];
-    console.log(this.storedForms); // Print all stored forms to the console
-  }
-
-  portNumberValidator(control: FormControl): { [key: string]: any } | null {
-    const portNumber = control.value;
-    if (portNumber && String(portNumber).length > 5) {
-      return { 'portNumberTooLong': true };
-    }
-    return null;
-  }
-
-  urlValidator(control: FormControl): { [key: string]: any } | null {
-    const url = control.value;
-    const validUrlPattern = /^(http|https):\/\/[^\/]+$/;
-    if (url && !validUrlPattern.test(url)) {
-      return { 'invalidUrl': true };
-    }
-    return null;
+    this.storedForms = JSON.parse(storedFormsString);
   }
 }
