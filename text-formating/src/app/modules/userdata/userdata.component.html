@@ -24,29 +24,47 @@
         <div class="mb-3">
           <label for="dbname" class="form-label">Database Name</label>
           <input type="text" class="form-control" formControlName="dbname" id="dbname" placeholder="Enter Database Name">
-          <div class="text-danger" *ngIf="signup.get('dbname')?.errors?.['required']">
-            Database Name is required.
+          <div>
+            <span class="text-danger" *ngIf="signup.get('dbname')?.errors?.['required']">
+              Database Name is required.
+            </span>
+            <span class="text-danger" *ngIf = "signup.get('dbname')?.errors?.['pattern']">Special Characters are not aloowed</span>
           </div>
         </div>
         <div class="mb-3">
           <label for="portnumber" class="form-label">Port Number</label>
           <input type="number" class="form-control" formControlName = "portnumber" id="portnumber" placeholder="Port Number">
-          <div class="text-danger" *ngIf="signup.get('portnumber')?.errors?.['required']">
-            Port number is required.
+          <div>
+            <span class="text-danger" *ngIf="signup.get('portnumber')?.errors?.['required']">
+              Port number is required.
+            </span>
+            <div class="text-danger" *ngIf="signup.get('portnumber')?.errors?.['pattern']">
+              Port number should be valid
+            </div>
           </div>
         </div>
         <div class="mb-3">
           <label for="dbpassword" class="form-label">Password</label>
           <input type="password" class="form-control" formControlName = "dbpassword"  id="dbpassword" placeholder="Password">
-          <div class="text-danger" *ngIf="signup.get('dbpassword')?.errors?.['required']">
-            Password is required.
+          <div>
+            <span class="text-danger" *ngIf="signup.get('dbpassword')?.errors?.['required']">
+              Password is required.
+            </span>
+            <span class="text-danger" *ngIf="signup.get('dbpassword')?.errors?.['minlength']">
+              Password minimum length should be 7.
+            </span>
           </div>
         </div>
         <div class="mb-3">
           <label for="dburl" class="form-label">Database Url</label>
           <input type="url" class="form-control" formControlName = "dburl" id="dburl" placeholder="URL">
-          <div class="text-danger" *ngIf="signup.get('dburl')?.errors?.['required']">
-            URL is required.
+          <div>
+            <span class="text-danger" *ngIf="signup.get('dburl')?.errors?.['required']">
+              URL is required.
+            </span>
+            <span class="text-danger" *ngIf="signup.get('dburl')?.errors?.['pattern']">
+              This is not correct URL.
+            </span>
           </div>
         </div>
         <div class="text-center">
@@ -68,6 +86,7 @@
         <p><strong>Port Number:</strong> {{ form.portnumber }}</p>
         <p><strong>Database URL:</strong> {{ form.dburl }}</p>
       </div>
+      <hr>
     </div>
   </div>
 </div>

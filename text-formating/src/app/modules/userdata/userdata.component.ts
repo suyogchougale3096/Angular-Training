@@ -34,7 +34,9 @@ export class UserdataComponent implements OnInit {
       dbname : new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9]+$/)]),
       portnumber : new FormControl('',[Validators.required,Validators.pattern(/^\d{1,5}$/)]),
       dbpassword : new FormControl('',[Validators.required,Validators.minLength(7)]),
-      dburl : new FormControl('',[Validators.required,this.urlValidator])
+      // dburl : new FormControl('',[Validators.required,this.urlValidator])
+      dburl : new FormControl('',[Validators.required,Validators.pattern(/^(https?:\/\/.*[^\/])$/)])
+      
     })
   }
   ngOnInit(): void {
@@ -46,8 +48,6 @@ export class UserdataComponent implements OnInit {
     // this.database_name = `${this.signup.get('dbname')?.value}`;
     // this.port_number = Number(`${this.signup.get('portnumber')?.value}`);
     // this.database_name = `${this.signup.get('dbpassword')?.value}`;
-    // this.database_url = `${this.signup.get('dburl')?.value}`;
-    // console.log(typeof(this.signup.value));
 
     // const formValues = this.signup.value;
     // const uniqueId = new Date().getTime();
@@ -57,6 +57,7 @@ export class UserdataComponent implements OnInit {
     // this.signup.reset();
     // this.getAllStoredForms();
 
+    this.database_name = `${this.signup.get('dbname')?.value}`
 
     const formValues = this.signup.value;
     const existingFormsString = this.cookieService.get('signup');
