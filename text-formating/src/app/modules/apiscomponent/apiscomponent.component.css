@@ -1,0 +1,20 @@
+.apis-bg-color{
+    background-color: #B2BEB5;
+}
+
+.userid{
+    font-weight: bold;
+}
+
+.errormsg{
+    height: 80px;
+}
+
+.crud{
+    background-color: #848482;
+    color: white;
+}
+
+.response-data{
+    min-height: 40vh;
+}
