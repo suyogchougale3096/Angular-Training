@@ -34,7 +34,8 @@ export class UserdataComponent implements OnInit {
       dbname : new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9]+$/)]),
       portnumber : new FormControl('',[Validators.required,Validators.pattern(/^\d{1,5}$/)]),
       dbpassword : new FormControl('',[Validators.required,Validators.minLength(7)]),
-      dburl : new FormControl('',[Validators.required,this.urlValidator])
+      // dburl : new FormControl('',[Validators.required,this.urlValidator])
+      dburl : new FormControl('',[Validators.required,Validators.pattern(/^(http|https):\/\/[^ "]+$/)])
     })
   }
   ngOnInit(): void {
