@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserdataComponent } from './modules/userdata/userdata.component';
+import { ApiscomponentComponent } from './modules/apiscomponent/apiscomponent.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,9 @@ const routes: Routes = [
   {
     path : 'userdata', component : UserdataComponent
     // path : 'userdata', loadChildren : ()=> import('./modules/userdata/userdata.module').then(m => m.UserdataModule)
+  },
+  {
+    path : 'apis', component : ApiscomponentComponent
   }
 ];
 
