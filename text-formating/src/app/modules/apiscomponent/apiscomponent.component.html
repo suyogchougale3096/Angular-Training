@@ -1,26 +1,35 @@
 <div class="container-fluid apis-bg-color mt-5">
     <div class="row p-3 d-flex align-items-start">
-        <div class="col-md-4 d-flex align-items-center">
-            <span class="me-3">User ID :-</span><input [(ngModel)] = "id" type="text" class="form-control bg-white p-1 w-75" (input) = "setId()">
+        <div class="col-md-4">
+            <span class="me-3">User ID:</span><input [(ngModel)] = "id" type="text" class="bg-white p-1 w-75" (input) = "setId()" required>
+            <div *ngIf="!id.trim()" class="">
+              <span class="text-danger">User ID cannot be blank.</span>
+          </div>
+
         </div>
-        <div class="col-md-8 ">
-            <div class="errormsg border bg-white p-2">Error Message</div>
+        <div class="col-md-8">
+            <div class="errormsg border bg-white p-2">
+              <span *ngIf="errorMsg" class="errormsg text-danger p-2">{{errorMsg}}</span>
+            </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row p-3">
         <div class="col-md-4">
             <div class="d-flex flex-column p-4">
                 <button id = "comments" class = "btn btn-secondary w-50 mb-2 ms-4" type="button" (click) = "getbtn($event)">Comments</button>
                 <button id = "albums" class = "btn btn-secondary w-50 mb-2 ms-4" type="button" (click) = "getbtn($event)">Albums</button>
                 <button id = "photos" class = "btn btn-secondary w-50 mb-2 ms-4" type="button" (click) = "getbtn($event)">Photos</button>
                 <button id = "todos" class = "btn btn-secondary w-50 ms-4" type="button" (click) = "getbtn($event)">Todos</button>
-            </div>  
+            </div>
             <div class="mt-3 d-flex justify-content-between p-3">
                 <button class="w-25 btn crud">Delete</button>
                 <button class="w-25 btn crud">Update</button>
                 <button class="w-25 btn crud">Create</button>
-            </div>  
+            </div>
+            <div class="d-flex align-items-center">
+              <span class="me-3">Input Body :-</span><input [(ngModel)] = "id" type="text" class="form-control bg-white p-1 w-50">
+            </div>
         </div>
         <div class="col-md-8 ">
             <div class="response-data border bg-white p-2">Response Data
@@ -95,4 +104,3 @@
         </div>
     </div>
 </div>
- 
