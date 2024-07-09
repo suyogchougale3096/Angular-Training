@@ -11,15 +11,19 @@ export class ApidataService {
   url : string = 'https://jsonplaceholder.typicode.com';
   endpoint = '';
   id = '';
+  input_body : any;
 
+  information : any = {}
   constructor(private http : HttpClient) {
-
    }
 
    setId(id : any){
     this.id = id;
    }
 
+   setInputBody(temp : any){
+    this.input_body = temp;
+   }
    setEndPoint(endpoint : any){
     this.endpoint = endpoint;
    }
@@ -32,27 +36,18 @@ export class ApidataService {
     return this.http.delete<any>(`${this.url}/comments/${this.id}`)
    }
 
+   createData(temp : any){
+    this.information = {
+      'id' : this.id,
+      'body' : this.input_body
+    }
+    return this.http.post<any>(`${this.url}/${this.endpoint}/`,this.information)
+   }
 
-
-
-
-  //  getCommentsData(){
-  //   this.url = 'https://jsonplaceholder.typicode.com/comments'
-  //   return this.http.get(this.url);
-  //  }
-
-  //  getAlbumsData(){
-  //   this.url = 'https://jsonplaceholder.typicode.com/albums';
-  //   return this.http.get(this.url);
-  //  }
-
-  //  getPhotosData(){
-  //   this.url = 'https://jsonplaceholder.typicode.com/photos';
-  //   return this.http.get(this.url);
-  //  }
-
-  //  getTodosData(){
-  //   this.url = 'https://jsonplaceholder.typicode.com/todos';
-  //   return this.http.get(this.url);
-  //  }
+   updateUser(temp : any){
+    this.information = {
+      'body' : this.input_body
+    }
+    return this.http.put<any>(`${this.url}/${this.endpoint}/${this.id}`,this.information)
+   }
 }

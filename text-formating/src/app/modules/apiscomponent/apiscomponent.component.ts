@@ -12,9 +12,13 @@ export class ApiscomponentComponent implements OnInit {
   info : any = '';
   btn_value : any = '';
   errorMsg: string = '';
-
+  input_body : any= '';
   flag : boolean = false;
 
+  information = {
+    "id": this.id,
+    "body" : this.input_body
+  }
   constructor(private data : ApidataService) {
 
   }
@@ -25,10 +29,21 @@ export class ApiscomponentComponent implements OnInit {
     this.data.setId(this.id);
   }
 
+  onCreateData(){
+    this.data.setInputBody(this.input_body);
+    this.data.createData(this.id).subscribe(
+      (response) => {console.log(response)}
+    );
+  }
+
+  onUpdateData(){
+    this.data.setInputBody(this.input_body);
+    this.data.updateUser(this.id).subscribe();
+    debugger
+  }
+
   onDeleteData(){
-    this.data.deleteUser(this.id).subscribe(
-      (response) => console.log(response)
-    )
+    this.data.deleteUser(this.id).subscribe()
   }
 
   getbtn(event: any) {
@@ -53,9 +68,16 @@ export class ApiscomponentComponent implements OnInit {
 
 
   operations(event : any){
-    // console.log(event.target.id);
+    console.log(event.target.id);
     if(event.target.id == 'deletebtn'){
       this.onDeleteData()
+    }else if(event.target.id == 'createbtn'){
+      this.data.setEndPoint(this.btn_value);
+      this.onCreateData();
+      console.log(this.id);
+    }else if(event.target.id == 'updatebtn'){
+      this.data.setEndPoint(this.btn_value);
+      this.onUpdateData();
     }
   }
 
