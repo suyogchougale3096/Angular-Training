@@ -1,8 +1,8 @@
 <div class="container-fluid apis-bg-color mt-5">
     <div class="row p-3 d-flex align-items-start">
         <div class="col-md-4">
-            <span class="me-3">User ID:</span><input [(ngModel)] = "id" type="text" class="bg-white p-1 w-75" (input) = "setId()" required>
-            <div *ngIf="!id.trim()" class="">
+            <span class="me-3">User ID:</span><input [(ngModel)] = "id" type="text" class="bg-white p-1 w-75" (input) = "setId()" #userid = "ngModel" required>
+            <div *ngIf="!id.trim() && (userid.dirty || userid.touched)" class="">
               <span class="text-danger">User ID cannot be blank.</span>
           </div>
 
@@ -47,12 +47,21 @@
                             </tr>
                         </table>
                     </div>
-                    <!-- <div>{{info.id}}</div>
-                    <div>{{info.name}}</div>
-                    <div>{{info.email}}</div>
-                    <div>{{info.postid}}</div>
-                    <div>{{info.body}}</div> -->
                 </div>
+
+                <div *ngIf = "method">
+
+                  <div *ngFor = "let item of info | keyvalue">
+                      <table class="table">
+                          <tr>
+                              <th>{{item.key}}</th>
+                          </tr>
+                          <tr>
+                              <td>{{item.value}}</td>
+                          </tr>
+                      </table>
+                  </div>
+              </div>
 
                 <div *ngIf = "btn_value == 'albums'">
                     <div *ngFor = "let item of info | keyvalue">

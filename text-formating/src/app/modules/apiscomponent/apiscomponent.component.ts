@@ -14,11 +14,14 @@ export class ApiscomponentComponent implements OnInit {
   errorMsg: string = '';
   input_body : any= '';
   flag : boolean = false;
+  method : any;
 
   information = {
     "id": this.id,
     "body" : this.input_body
   }
+
+  storedData : any= {}
   constructor(private data : ApidataService) {
 
   }
@@ -32,14 +35,15 @@ export class ApiscomponentComponent implements OnInit {
   onCreateData(){
     this.data.setInputBody(this.input_body);
     this.data.createData(this.id).subscribe(
-      (response) => {console.log(response)}
+      (response) => {
+        this.info = response
+      }
     );
   }
 
   onUpdateData(){
     this.data.setInputBody(this.input_body);
     this.data.updateUser(this.id).subscribe();
-    debugger
   }
 
   onDeleteData(){
@@ -68,7 +72,7 @@ export class ApiscomponentComponent implements OnInit {
 
 
   operations(event : any){
-    console.log(event.target.id);
+    this.method = event.target.id;
     if(event.target.id == 'deletebtn'){
       this.onDeleteData()
     }else if(event.target.id == 'createbtn'){

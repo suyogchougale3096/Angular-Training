@@ -41,13 +41,13 @@ export class ApidataService {
       'id' : this.id,
       'body' : this.input_body
     }
-    return this.http.post<any>(`${this.url}/${this.endpoint}/`,this.information)
+    return this.http.post<any>(`${this.url}/comments/`,this.information)
    }
 
    updateUser(temp : any){
     this.information = {
       'body' : this.input_body
     }
-    return this.http.put<any>(`${this.url}/${this.endpoint}/${this.id}`,this.information)
+    return this.http.put<any>(`${this.url}/comments/${this.id}`,this.information)
    }
 }
