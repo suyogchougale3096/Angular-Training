@@ -63,10 +63,11 @@ export class ApiscomponentComponent implements OnInit {
       if (apiInfo) {
         this.info = apiInfo;
         console.log(this.info);
-        this.errorMsg = ''; // Clear error message on successful response
+        this.errorMsg = '';
       }
     },(err) =>{
       this.errorMsg = err.message;
+      this.info = '';
     });
   }
 
