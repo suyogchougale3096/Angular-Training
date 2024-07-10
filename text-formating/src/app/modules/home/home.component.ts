@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,17 +7,15 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  btn_class : any = '';
+  btn_class : any;
   constructor() { }
 
   ngOnInit(): void {
   }
 
   updateData(item : any){
-    // alert(item)
-    console.log("2")
     this.btn_class = item;
-    // console.log(this.btn_class);
+    console.log(this.btn_class)
   }
 
 }

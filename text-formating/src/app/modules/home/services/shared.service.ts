@@ -1,16 +1,17 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
 
-  private inputData : string = '';
-  dataChange : EventEmitter<string> = new EventEmitter<string>();
+  private inputData : Subject<string> = new Subject<string>();
+
+  inputDataChange : Observable<string> = this.inputData.asObservable();
   constructor() { }
 
   setDataChange(data : string){
-    this.inputData = data;
-    this.dataChange.emit(this.inputData);
+    this.inputData.next(data);
   }
 }

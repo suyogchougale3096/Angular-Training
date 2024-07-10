@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
 
 
@@ -14,15 +14,21 @@ export class FormatterComponent implements OnInit {
   char_count = 0;
   btn_id : any = '';
   color_id : any = '';
+  favcolor : any;
 
-
-  // @Output() clickedButtonEvent = new EventEmitter<any>();
-
-  constructor(private _sharedService : SharedService) { 
-    
+  passBtnData = {
+    btn_value : '',
+    setbtn : false
   }
+
+  @Output() updateDataEvent = new EventEmitter<any>();
+
+  constructor(private _sharedService : SharedService) {
+  }
+
+
   ngOnInit(): void {
-    this._sharedService.dataChange.subscribe(data =>{
+    this._sharedService.inputDataChange.subscribe(data =>{
       this.text1 = data;
       this.char_count = this.text1.length;
       let temp = this.text1.trim().split(" ");
@@ -31,19 +37,17 @@ export class FormatterComponent implements OnInit {
     })
   }
 
-  @Output() updateDataEvent = new EventEmitter<any>();
-
   getId(event : any){
-    console.log("1")
     if(event.target.id == 'favcolor'){
-      // alert("yes")
-      this.color_id = event.target.value;
-      this.updateDataEvent.emit(this.color_id)
+      // this.color_id = event.target.value;
+      this.updateDataEvent.emit(event.target.value)
     }else{
-      this.btn_id = event.target.id;
-      this.updateDataEvent.emit(this.btn_id)
-      // alert("no")
+      this.passBtnData = {
+        btn_value : event.target.id,
+        setbtn : false
+      }
+      this.updateDataEvent.emit(this.passBtnData)
     }
     }
-    
+
 }

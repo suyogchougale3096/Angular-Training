@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges,Renderer2, ElementRef } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
+import { NONE_TYPE } from '@angular/compiler';
 
 @Component({
   selector: 'app-text-display',
@@ -11,81 +12,97 @@ export class TextDisplayComponent implements OnInit, OnChanges {
   name : string = '';
   result : string = '';
 
-  fontSize = 10;
+  values : any;
+
+  fontSize = 16;
   stylethis: { [key: string]: string } = { 'font-size': `${this.fontSize}px` };
 
-  constructor(private _sharedService : SharedService,private renderer: Renderer2, private el: ElementRef) { }
+  isToggle : boolean = false;
+  isItalic : boolean = false;
+  isUnderline : boolean = false;
+
+  isObject = false;
+
+  constructor(private _sharedService : SharedService,private renderer: Renderer2, private el: ElementRef) {
+  }
 
   ngOnInit(): void {
+
   }
 
   display(){
+    this.result = this.name;
     this._sharedService.setDataChange(this.name);
   }
 
-  @Input() item : any = 'none';
+  @Input() item : any;
 
   ngOnChanges(changes: SimpleChanges): void {
-
-    console.log("3")
     if(changes['item']){
-      console.log("OnChange detect")
-      console.log(changes['item'].currentValue)
-      const btnValue = changes['item'].currentValue;
+      let btnValue : string = '';
+      console.log(this.item)
+
+      if(this.isObject){
+        let fieldValues = JSON.parse(JSON.stringify(this.item))
+        let keys = Object.keys(fieldValues)
+        this.values = keys.map(k => fieldValues[k])
+        btnValue = this.values[0];
+      }
+
+      this.isObject = true;
 
       switch(btnValue){
         case 'clearallbtn':
           this.name = '';
-          this.result = '';
-          console.log(this.name)
+          this.display();
           break;
         case 'whitespacebtn':
-          this.result = this.name.replace(/\s+/g, '')
+          this.result = this.result.replace(/\s+/g, '');
           break;
         case 'reverseallbtn':
-
-          this.result = this.name.split('').reverse().join('');
+          this.result = this.result.split('').reverse().join('');
           break;
         case 'rspecialcharbtn':
-
-          this.result = this.name.replace(/[^a-zA-Z0-9 ]/g, '');
+          this.result = this.result.replace(/[^a-zA-Z0-9 ]/g, '');
           break;
         case 'removestylebtn':
-
-          // this.name = "remove Style"
-          const element = this.el.nativeElement.querySelector('.remove-style');
-          this.renderer.removeAttribute(element, 'style');
+          this.stylethis = {}
           break;
         case 'capitalword':
-
-          this.result = this.name.toUpperCase();
+          this.result = this.result.toUpperCase();
           break;
-        case 'boldbtn':
-          this.result = this.name;
-            this.stylethis['font-weight'] = 'bold';
-            break;
-        case 'italicbtn':
-          this.result = this.name;
-            this.stylethis['font-style'] = 'italic';
-            break;
-        case 'underlinebtn':
-          this.result = this.name;
-            this.stylethis['text-decoration'] = 'underline';
 
+        case 'boldbtn':
+            this.stylethis['font-weight'] = this.isToggle? 'normal': 'bold';
+            this.isToggle = !this.isToggle
+            console.log("body",this.isToggle)
+            // console.log(this.values[1])
             break;
+
+        case 'italicbtn':
+            this.stylethis['font-style'] = this.isItalic? 'normal': 'italic';
+            this.isItalic = !this.isItalic
+            console.log("body",this.isItalic)
+            // this.stylethis['font-style'] = 'italic';
+            break;
+
+        case 'underlinebtn':
+            this.stylethis['text-decoration'] = this.isUnderline? 'none': 'underline';
+            this.isUnderline = !this.isUnderline
+            console.log("body",this.isUnderline)
+            // this.stylethis['text-decoration'] = 'underline';
+            break;
+
         case 'increasesizebtn':
-          this.result = this.name;
-            this.fontSize += 10;
+          this.fontSize += 10;
           this.stylethis['font-size'] = `${this.fontSize}px`;
-            break;
+          break;
 
         case 'decreasesizebtn':
-          this.result = this.name;
-          this.fontSize -= 10;
+            this.fontSize -= 10;
             this.stylethis['font-size'] = `${this.fontSize}px`;
             break;
         default:
-          this.result = this.name;
           this.stylethis['color'] = `${this.item}`
           break;
       }

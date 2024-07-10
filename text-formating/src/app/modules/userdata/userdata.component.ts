@@ -40,8 +40,6 @@ export class UserdataComponent implements OnInit {
         existingForms = JSON.parse(existingFormsString);
       } catch (e) {
         console.error('Error parsing stored forms:', e);
-        // Optionally reset the cookie if parsing fails
-        this.cookieService.delete('signup');
       }
     }
 
