@@ -7,6 +7,7 @@ import { UserdataModule } from './modules/userdata/userdata.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiscomponentModule } from './modules/apiscomponent/apiscomponent.module';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -16,7 +17,7 @@ import { ApiscomponentModule } from './modules/apiscomponent/apiscomponent.modul
     AppRoutingModule,
     UserdataModule,
     HttpClientModule,
-    ApiscomponentModule
+    ApiscomponentModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
