@@ -18,7 +18,6 @@ export class FormatterComponent implements OnInit {
 
   passBtnData = {
     btn_value : '',
-    setbtn : false
   }
 
   @Output() updateDataEvent = new EventEmitter<any>();
@@ -44,7 +43,6 @@ export class FormatterComponent implements OnInit {
     }else{
       this.passBtnData = {
         btn_value : event.target.id,
-        setbtn : false
       }
       this.updateDataEvent.emit(this.passBtnData)
     }

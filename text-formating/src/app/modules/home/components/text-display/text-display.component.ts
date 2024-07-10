@@ -21,8 +21,6 @@ export class TextDisplayComponent implements OnInit, OnChanges {
   isItalic : boolean = false;
   isUnderline : boolean = false;
 
-  isObject = false;
-
   constructor(private _sharedService : SharedService,private renderer: Renderer2, private el: ElementRef) {
   }
 
@@ -42,14 +40,12 @@ export class TextDisplayComponent implements OnInit, OnChanges {
       let btnValue : string = '';
       console.log(this.item)
 
-      if(this.isObject){
+      if(!(changes['item'].isFirstChange())){
         let fieldValues = JSON.parse(JSON.stringify(this.item))
         let keys = Object.keys(fieldValues)
         this.values = keys.map(k => fieldValues[k])
         btnValue = this.values[0];
       }
-
-      this.isObject = true;
 
       switch(btnValue){
         case 'clearallbtn':
