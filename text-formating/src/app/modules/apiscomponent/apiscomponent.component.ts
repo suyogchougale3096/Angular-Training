@@ -43,11 +43,19 @@ export class ApiscomponentComponent implements OnInit {
 
   onUpdateData(){
     this.data.setInputBody(this.input_body);
-    this.data.updateUser(this.id).subscribe();
+    this.data.updateUser(this.id).subscribe(
+      (response) =>{
+        this.info = response
+      }
+    );
   }
 
   onDeleteData(){
-    this.data.deleteUser(this.id).subscribe()
+    this.data.deleteUser(this.id).subscribe(
+      (response) =>{
+        this.info = response
+      }
+    )
   }
 
   getbtn(event: any) {
