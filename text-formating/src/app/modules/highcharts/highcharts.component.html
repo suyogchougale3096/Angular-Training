@@ -1,0 +1,44 @@
+<div class="container-fluid mt-5 height-set">
+  <div class="row">
+    <div class="col-md-2 border p-3 navbar-bg-color">
+      <ul class="nav flex-column border bg-light p-1">
+        <span class="border-bottom border-dark text-start">
+          <span class="ms-3">Select Chart</span>
+        </span>
+        <span class="border-bottom border-dark text-start">
+          <li class="nav-item">
+            <a class="nav-link text-dark" class = "btn" (click)="isDisplay('piechart')">Pie Chart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" class = "btn" (click)="isDisplay('columnchart')">Column Chart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" class = "btn" (click)="isDisplay('linechart')">Line chart</a>
+          </li>
+        </span>
+        <span class="text-start">
+          <li class="nav-item">
+            <a class="nav-link text-dark" class = "btn" (click)="isDisplay('treemapchart')">Treemap chart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" class = "btn" (click)="isDisplay('areachart')">Area Chart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" class = "btn" (click)="isDisplay('stakedbarchart')">StakedBar chart</a>
+          </li>
+        </span>
+      </ul>
+    </div>
+    <div class="col-md-9 border p-3 ms-md-3 navbar-bg-color">
+        <div class="border d-flex align-items-center justify-content-center fs-3 h-100 bg-light">
+          <div *ngIf="show == false; else elseBlock">{{initalMessage}}</div>
+          <ng-template #elseBlock></ng-template>
+          <div>
+            <div id = "container" class="p-4"></div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+

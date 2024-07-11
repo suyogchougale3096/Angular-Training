@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserdataComponent } from './modules/userdata/userdata.component';
 import { ApiscomponentComponent } from './modules/apiscomponent/apiscomponent.component';
+import { HighchartsComponent } from './modules/highcharts/highcharts.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,9 @@ const routes: Routes = [
   },
   {
     path : 'apis', component : ApiscomponentComponent
+  },
+  {
+    path : 'highcharts', component : HighchartsComponent
   }
 ];
 
