@@ -17,7 +17,6 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     HighchartsRoutingModule,
     FormsModule
-
   ]
 })
 export class HighchartsModule { }
