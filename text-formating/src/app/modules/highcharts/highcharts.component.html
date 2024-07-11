@@ -7,30 +7,38 @@
         </span>
         <span class="border-bottom border-dark text-start">
           <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Pie Chart</a>
+            <a class="nav-link text-dark" class = "btn" (click)="isDisplay('piechart')">Pie Chart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Column Chart</a>
+            <a class="nav-link text-dark" class = "btn" (click)="isDisplay('columnchart')">Column Chart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Line chart</a>
+            <a class="nav-link text-dark" class = "btn" (click)="isDisplay('linechart')">Line chart</a>
           </li>
         </span>
         <span class="text-start">
           <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Treemap chart</a>
+            <a class="nav-link text-dark" class = "btn" (click)="isDisplay('treemapchart')">Treemap chart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Area Chart</a>
+            <a class="nav-link text-dark" class = "btn" (click)="isDisplay('areachart')">Area Chart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark" href="#">StakedBar chart</a>
+            <a class="nav-link text-dark" class = "btn" (click)="isDisplay('stakedbarchart')">StakedBar chart</a>
           </li>
         </span>
       </ul>
     </div>
     <div class="col-md-9 border p-3 ms-md-3 navbar-bg-color">
-        <div class="border d-flex align-items-center justify-content-center fs-3 h-100 bg-light">No Chart Selected</div>
+        <div class="border d-flex align-items-center justify-content-center fs-3 h-100 bg-light">
+          <div *ngIf="show == false; else elseBlock">{{initalMessage}}</div>
+          <ng-template #elseBlock></ng-template>
+          <div>
+            <div id = "container"></div>
+          </div>
+        </div>
     </div>
   </div>
 </div>
+
+

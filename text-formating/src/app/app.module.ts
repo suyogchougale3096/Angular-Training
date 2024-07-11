@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { UserdataModule } from './modules/userdata/userdata.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiscomponentModule } from './modules/apiscomponent/apiscomponent.module';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { HighchartsModule } from './modules/highcharts/highcharts.module';
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import { ApiscomponentModule } from './modules/apiscomponent/apiscomponent.modul
     UserdataModule,
     HttpClientModule,
     ApiscomponentModule,
-  ],
+    HighchartsModule
+ ],
   providers: [],
   bootstrap: [AppComponent]
 })
