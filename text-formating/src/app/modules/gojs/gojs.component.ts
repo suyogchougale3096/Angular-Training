@@ -45,8 +45,15 @@ export class GojsComponent implements OnInit {
         $(go.Shape, {strokeWidth : 2},
           new go.Binding('stroke','color'),
           new go.Binding('strokeWidth','width')
-        )
+        ),
+        $(go.Shape,{ toArrow : "Standard",stroke : ''},
+          new go.Binding('fill','color'),
+          new go.Binding('toArrow','arrowtype'),
+        ),
       )
+
+
+
 
     const nodeDataArray =
       [
@@ -62,7 +69,7 @@ export class GojsComponent implements OnInit {
       ]
 
     const linkDataArray = [
-      {from : 'Rubiscape' ,to : 'RubiConnect', color : 'pink',width : '5px'},
+      {from : 'Rubiscape' ,to : 'RubiConnect', color : 'pink',width : '5px', arrowtype : 'Standard'},
       {from : 'Rubiscape' ,to : 'Rubistudio', color : 'pink',width : '5px'},
       {from : 'Rubiscape' ,to : 'Rubisight', color : 'pink',width : '5px'},
       // {from : 'Rubiscape' ,to : 'Rubisight'},
@@ -77,7 +84,7 @@ export class GojsComponent implements OnInit {
 
     this.diagram.layout = $(go.TreeLayout,
       {
-        angle : 90
+        angle : 90,
       }
     )
 
