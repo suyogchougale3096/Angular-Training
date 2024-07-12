@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiscomponentModule } from './modules/apiscomponent/apiscomponent.module';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { HighchartsModule } from './modules/highcharts/highcharts.module';
+import { GojsModule } from './modules/gojs/gojs.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HighchartsModule } from './modules/highcharts/highcharts.module';
     UserdataModule,
     HttpClientModule,
     ApiscomponentModule,
-    HighchartsModule
+    HighchartsModule,
+    GojsModule
  ],
   providers: [],
   bootstrap: [AppComponent]
