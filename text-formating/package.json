@@ -19,6 +19,8 @@
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
     "@syncfusion/ej2-angular-treemap": "^26.1.35",
+    "gojs": "^2.3.5",
+    "gojs-angular": "^2.0.7",
     "highcharts": "^10.1.0",
     "highcharts-angular": "^3.0.0",
     "ngx-cookie-service": "^14.0.0",

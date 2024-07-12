@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserdataComponent } from './modules/userdata/userdata.component';
 import { ApiscomponentComponent } from './modules/apiscomponent/apiscomponent.component';
 import { HighchartsComponent } from './modules/highcharts/highcharts.component';
+import { GojsComponent } from './modules/gojs/gojs.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,9 @@ const routes: Routes = [
   },
   {
     path : 'highcharts', component : HighchartsComponent
+  },
+  {
+    path : 'gojs', component : GojsComponent
   }
 ];
 
