@@ -6,6 +6,7 @@ import { HomeComponent } from './home.component';
 import { FormatterComponent } from './components/formatter/formatter.component';
 import { TextDisplayComponent } from './components/text-display/text-display.component';
 import { FormsModule } from '@angular/forms';
+import { SpecialcharremovePipe } from './pipes/specialcharremove.pipe';
 
 
 
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     HomeComponent,
     FormatterComponent,
-    TextDisplayComponent
+    TextDisplayComponent,
+    SpecialcharremovePipe
   ],
   imports: [
     CommonModule,

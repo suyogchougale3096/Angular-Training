@@ -11,6 +11,7 @@ export class TextDisplayComponent implements OnInit, OnChanges {
 
   name : string = '';
   result : string = '';
+  specialcharRemove : boolean = false;
 
   values : any;
 
@@ -59,7 +60,8 @@ export class TextDisplayComponent implements OnInit, OnChanges {
           this.result = this.result.split('').reverse().join('');
           break;
         case 'rspecialcharbtn':
-          this.result = this.result.replace(/[^a-zA-Z0-9 ]/g, '');
+          this.specialcharRemove = true;
+          // this.result = this.result.replace(/[^a-zA-Z0-9 ]/g, '');
           break;
         case 'removestylebtn':
           this.stylethis = {}
