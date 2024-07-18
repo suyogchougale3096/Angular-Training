@@ -30,6 +30,7 @@ export class TextDisplayComponent implements OnInit, OnChanges {
   }
 
   display(){
+    this.specialcharRemove = false
     this.result = this.name;
     this._sharedService.setDataChange(this.name);
   }
